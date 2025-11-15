@@ -4,7 +4,7 @@ import { EnvironmentProvider } from '@/context/environment-context';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'ImmersioVerse',
+  title: 'ergle_eye',
   description: 'The creative portfolio of a developer and artist.',
 };
 

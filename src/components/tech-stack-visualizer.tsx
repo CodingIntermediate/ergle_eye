@@ -2,7 +2,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { ReactIcon, JavaScriptIcon, FirebaseIcon, MernIcon } from '@/components/icons';
-import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 import { renderToString } from 'react-dom/server';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -31,37 +30,44 @@ export default function TechStackVisualizer() {
     const group = new THREE.Group();
     scene.add(group);
 
-    const loader = new SVGLoader();
+    // We'll import SVGLoader dynamically to avoid TypeScript/module resolution issues during SSR/build
+    let isUnmounted = false;
 
-    tech.forEach(({ Icon, color }, index) => {
-      const iconString = renderToString(<Icon fill={color} />);
-      const data = loader.parse(iconString);
-      const paths = data.paths;
+    (async () => {
+      const { SVGLoader } = await import('three/examples/jsm/loaders/SVGLoader');
+      if (isUnmounted) return;
+      const loader = new SVGLoader();
 
-      const iconGroup = new THREE.Group();
-      iconGroup.scale.multiplyScalar(0.01);
-      iconGroup.scale.y *= -1;
+      tech.forEach(({ Icon, color }, index) => {
+        const iconString = renderToString(<Icon fill={color} />);
+        const data = loader.parse(iconString);
+        const paths = data.paths;
 
-      for (const path of paths) {
-        const material = new THREE.MeshBasicMaterial({
-          color: path.color,
-          side: THREE.DoubleSide,
-          depthWrite: false,
-        });
-        const shapes = SVGLoader.createShapes(path);
-        for (const shape of shapes) {
-          const geometry = new THREE.ShapeGeometry(shape);
-          const mesh = new THREE.Mesh(geometry, material);
-          iconGroup.add(mesh);
+        const iconGroup = new THREE.Group();
+        iconGroup.scale.multiplyScalar(0.01);
+        iconGroup.scale.y *= -1;
+
+        for (const path of paths) {
+          const material = new THREE.MeshBasicMaterial({
+            color: path.color,
+            side: THREE.DoubleSide,
+            depthWrite: false,
+          });
+          const shapes = (SVGLoader as any).createShapes(path);
+          for (const shape of shapes) {
+            const geometry = new THREE.ShapeGeometry(shape);
+            const mesh = new THREE.Mesh(geometry, material);
+            iconGroup.add(mesh);
+          }
         }
-      }
-      
-      const angle = (index / tech.length) * Math.PI * 2;
-      const radius = 2.5;
-      iconGroup.position.x = Math.cos(angle) * radius;
-      iconGroup.position.y = Math.sin(angle) * radius;
-      group.add(iconGroup);
-    });
+
+        const angle = (index / tech.length) * Math.PI * 2;
+        const radius = 2.5;
+        iconGroup.position.x = Math.cos(angle) * radius;
+        iconGroup.position.y = Math.sin(angle) * radius;
+        group.add(iconGroup);
+      });
+    })();
 
     const mouse = new THREE.Vector2();
     const onMouseMove = (event: MouseEvent) => {
@@ -89,6 +95,7 @@ export default function TechStackVisualizer() {
     window.addEventListener('resize', handleResize)
 
     return () => {
+      isUnmounted = true;
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('resize', handleResize);
       if(currentMount) {

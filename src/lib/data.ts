@@ -63,4 +63,21 @@ export const profile = {
   bio: "Full-stack developer and digital artist, crafting immersive digital experiences where technology and creativity intersect.",
   imageUrl: PlaceHolderImages.find(p => p.id === 'profile-picture')?.imageUrl || '',
   imageHint: PlaceHolderImages.find(p => p.id === 'profile-picture')?.imageHint || '',
+  socials: [
+    {
+      name: 'GitHub',
+      url: 'https://github.com',
+      icon: 'Github',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://linkedin.com',
+      icon: 'Linkedin',
+    },
+    {
+        name: 'Twitter',
+        url: 'https://twitter.com',
+        icon: 'Twitter',
+    }
+  ]
 }

@@ -29,10 +29,17 @@ export default function ContactSection() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const mailtoLink = `mailto:curiouscoder85@gmail.com?subject=Contact from ${encodeURIComponent(
+      values.name
+    )}&body=${encodeURIComponent(values.message)}%0A%0AFrom:%20${encodeURIComponent(
+      values.name
+    )}%20(${encodeURIComponent(values.email)})`;
+
+    window.location.href = mailtoLink;
+
     toast({
-      title: 'Message Sent!',
-      description: 'Thank you for reaching out. I will get back to you shortly.',
+      title: 'Email Client Opened',
+      description: 'Please complete sending the message in your email client.',
     });
     form.reset();
   }

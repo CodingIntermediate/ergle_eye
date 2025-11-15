@@ -3,7 +3,7 @@
     {
       "id": "profile-picture",
       "description": "Profile picture of the user",
-      "imageUrl": "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwcm9maWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYzMTM2MTAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://i.ibb.co/23D8qjzR/Whats-App-Image-2025-11-15-at-22-25-33-c37a1d47.jpg",
       "imageHint": "profile portrait"
     },
     {
@@ -45,7 +45,7 @@
     {
       "id": "art-4",
       "description": "Fourth art piece",
-      "imageUrl": "https://images.unsplash.com/photo-1760578360105-dd9da4bc74c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwY2hhcmFjdGVyfGVufDB8fHx8MTc2MzIyNDU0M3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1760578360105-dd9da4bc74c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwY2hhcmFjdGVyfGVufDB8fHx8MTc2MzIyNDU0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fantasy character"
     }
   ]

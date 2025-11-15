@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "profile-picture",
+      "description": "Profile picture of the user",
+      "imageUrl": "https://images.unsplash.com/photo-1527203561188-dae1bc1a417f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYzMTM2MTAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "profile portrait"
+    },
+    {
+      "id": "project-1",
+      "description": "Thumbnail for the first project",
+      "imageUrl": "https://images.unsplash.com/photo-1607431067517-fda93b3e0aee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBjb2RlfGVufDB8fHx8MTc2MzIwNjU4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract code"
+    },
+    {
+      "id": "project-2",
+      "description": "Thumbnail for the second project",
+      "imageUrl": "https://images.unsplash.com/photo-1680992046626-418f7e910589?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzZXJ2ZXIlMjByb29tfGVufDB8fHx8MTc2MzE0NjU5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "server room"
+    },
+    {
+      "id": "project-3",
+      "description": "Thumbnail for the third project",
+      "imageUrl": "https://images.unsplash.com/photo-1631375937044-6dd5beac01d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzYzMjI0NTAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "circuit board"
+    },
+    {
+      "id": "art-1",
+      "description": "First art piece",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1567934150921-7632371abb32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHBhaW50aW5nfGVufDB8fHx8MTc2MzE2MzI5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract painting"
+    },
+    {
+      "id": "art-2",
+      "description": "Second art piece",
+      "imageUrl": "https://images.unsplash.com/photo-1589089813627-787eef6f3d33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwc2tldGNofGVufDB8fHx8MTc2MzExNTg5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital sketch"
+    },
+    {
+      "id": "art-3",
+      "description": "Third art piece",
+      "imageUrl": "https://images.unsplash.com/photo-1514449372970-c013485804bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdXJyZWFsJTIwbGFuZHNjYXBlfGVufDB8fHx8MTc2MzIxNjI0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "surreal landscape"
+    },
+    {
+      "id": "art-4",
+      "description": "Fourth art piece",
+      "imageUrl": "https://images.unsplash.com/photo-1760578360105-dd9da4bc74c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwY2hhcmFjdGVyfGVufDB8fHx8MTc2MzIyNDU0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fantasy character"
+    }
+  ]
 }

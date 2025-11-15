@@ -43,20 +43,6 @@ export const artworks = [
     imageHint: PlaceHolderImages.find(p => p.id === 'art-2')?.imageHint || '',
   },
   {
-    id: 'art-3',
-    title: 'Celestial Glitch',
-    description: 'Drawing',
-    imageUrl: PlaceHolderImages.find(p => p.id === 'art-3')?.imageUrl || '',
-    imageHint: PlaceHolderImages.find(p => p.id === 'art-3')?.imageHint || '',
-  },
-  {
-    id: 'art-4',
-    title: 'Synthwave Serenity',
-    description: 'Digital art',
-    imageUrl: PlaceHolderImages.find(p => p.id === 'art-4')?.imageUrl || '',
-    imageHint: PlaceHolderImages.find(p => p.id === 'art-4')?.imageHint || '',
-  },
-  {
     id: 'art-5',
     title: 'Leonardo',
     description: 'Sketch',

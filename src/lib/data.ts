@@ -59,7 +59,7 @@ export const artworks = [
 ];
 
 export const profile = {
-  name: "Alex Doe",
+  name: "Pranav S Prasad",
   bio: "Full-stack developer and digital artist, crafting immersive digital experiences where technology and creativity intersect.",
   imageUrl: PlaceHolderImages.find(p => p.id === 'profile-picture')?.imageUrl || '',
   imageHint: PlaceHolderImages.find(p => p.id === 'profile-picture')?.imageHint || '',

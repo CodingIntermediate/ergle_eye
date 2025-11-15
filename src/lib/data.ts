@@ -56,6 +56,20 @@ export const artworks = [
     imageUrl: PlaceHolderImages.find(p => p.id === 'art-4')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(p => p.id === 'art-4')?.imageHint || '',
   },
+  {
+    id: 'art-5',
+    title: 'Leonardo',
+    description: 'Sketch',
+    imageUrl: PlaceHolderImages.find(p => p.id === 'art-leonardo')?.imageUrl || '',
+    imageHint: PlaceHolderImages.find(p => p.id === 'art-leonardo')?.imageHint || '',
+  },
+  {
+    id: 'art-6',
+    title: 'Joker',
+    description: 'Sketch',
+    imageUrl: PlaceHolderImages.find(p => p.id === 'art-joker')?.imageUrl || '',
+    imageHint: PlaceHolderImages.find(p => p.id === 'art-joker')?.imageHint || '',
+  },
 ];
 
 export const profile = {

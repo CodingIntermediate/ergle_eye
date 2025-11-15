@@ -30,17 +30,10 @@ export const projects = [
 export const artworks = [
   {
     id: 'art-1',
-    title: 'Metropolis Dreams',
-    description: 'Digital painting',
+    title: 'Golden Hour',
+    description: 'Photography',
     imageUrl: PlaceHolderImages.find(p => p.id === 'art-1')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(p => p.id === 'art-1')?.imageHint || '',
-  },
-  {
-    id: 'art-2',
-    title: 'Neon Noir',
-    description: 'Photo edit',
-    imageUrl: PlaceHolderImages.find(p => p.id === 'art-2')?.imageUrl || '',
-    imageHint: PlaceHolderImages.find(p => p.id === 'art-2')?.imageHint || '',
   },
   {
     id: 'art-5',
@@ -55,6 +48,13 @@ export const artworks = [
     description: 'Sketch',
     imageUrl: PlaceHolderImages.find(p => p.id === 'art-joker')?.imageUrl || '',
     imageHint: PlaceHolderImages.find(p => p.id === 'art-joker')?.imageHint || '',
+  },
+  {
+    id: 'art-2',
+    title: 'Urban Explorer',
+    description: 'Photography',
+    imageUrl: PlaceHolderImages.find(p => p.id === 'art-2')?.imageUrl || '',
+    imageHint: PlaceHolderImages.find(p => p.id === 'art-2')?.imageHint || '',
   },
 ];
 

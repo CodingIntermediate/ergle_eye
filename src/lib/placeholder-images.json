@@ -3,7 +3,7 @@
     {
       "id": "profile-picture",
       "description": "Profile picture of the user",
-      "imageUrl": "https://i.ibb.co/23D8qjz/Whats-App-Image-2025-11-15-at-22-25-33-c37a1d47.jpg",
+      "imageUrl": "https://i.ibb.co/23D8qjzR/Whats-App-Image-2025-11-15-at-22-25-33-c37a1d47.jpg",
       "imageHint": "profile portrait"
     },
     {
@@ -51,13 +51,13 @@
     {
       "id": "art-leonardo",
       "description": "Sketch of Leonardo",
-      "imageUrl": "https://i.ibb.co/21LWNJh/Whats-App-Image-2025-11-15-at-23-31-16-a9423787.jpg",
+      "imageUrl": "https://i.ibb.co/MxcZSbKr/Whats-App-Image-2025-11-15-at-23-31-16-cbefe716.jpg",
       "imageHint": "leonardo sketch"
     },
     {
       "id": "art-joker",
       "description": "Sketch of Joker",
-      "imageUrl": "https://i.ibb.co/MxcZSbKr/Whats-App-Image-2025-11-15-at-23-31-16-cbefe716.jpg",
+      "imageUrl": "https://i.ibb.co/21LWNJhM/Whats-App-Image-2025-11-15-at-23-31-16-a9423787.jpg",
       "imageHint": "joker sketch"
     }
   ]

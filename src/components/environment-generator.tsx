@@ -1,5 +1,5 @@
 'use client';
-import { useState, useTransition, type ReactNode } from 'react';
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -26,10 +26,9 @@ const formSchema = z.object({
   elements: z.string().min(2, { message: 'Elements are required.' }),
 });
 
-export function EnvironmentGenerator({ children }: { children: ReactNode }) {
+export function EnvironmentGenerator({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
-  const { setEnvironmentUri } = useEnvironment();
+  const { setEnvironmentScript, isGenerating, setIsGenerating } = useEnvironment();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -41,29 +40,30 @@ export function EnvironmentGenerator({ children }: { children: ReactNode }) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    startTransition(async () => {
-      try {
-        const result = await generate3DEnvironment(values);
-        if (result.environmentDataUri) {
-          setEnvironmentUri(result.environmentDataUri);
-          toast({
-            title: 'Environment Generated!',
-            description: 'Your new 3D world is now active.',
-          });
-          setOpen(false);
-        } else {
-            throw new Error('Failed to generate environment URI.');
-        }
-      } catch (error) {
-        console.error(error);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsGenerating(true);
+    setOpen(false);
+    try {
+      const result = await generate3DEnvironment(values);
+      if (result.environmentScript) {
+        setEnvironmentScript(result.environmentScript);
         toast({
-          variant: 'destructive',
-          title: 'Generation Failed',
-          description: 'Could not generate the environment. Please try again.',
+          title: 'Environment Generated!',
+          description: 'Your new 3D world is now active.',
         });
+      } else {
+          throw new Error('Failed to generate environment script.');
       }
-    });
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: 'destructive',
+        title: 'Generation Failed',
+        description: 'Could not generate the environment. Please try again.',
+      });
+    } finally {
+      setIsGenerating(false);
+    }
   }
 
   return (
@@ -118,8 +118,8 @@ export function EnvironmentGenerator({ children }: { children: ReactNode }) {
               )}
             />
              <DialogFooter>
-                <Button type="submit" disabled={isPending} className="w-full bg-accent text-background hover:bg-accent/90">
-                {isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                <Button type="submit" disabled={isGenerating} className="w-full bg-accent text-background hover:bg-accent/90">
+                {isGenerating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 Generate
                 </Button>
             </DialogFooter>

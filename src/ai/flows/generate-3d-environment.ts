@@ -23,10 +23,10 @@ const Generate3DEnvironmentInputSchema = z.object({
 export type Generate3DEnvironmentInput = z.infer<typeof Generate3DEnvironmentInputSchema>;
 
 const Generate3DEnvironmentOutputSchema = z.object({
-  environmentDataUri: z
+  environmentScript: z
     .string()
     .describe(
-      'A data URI containing the generated 3D environment data, suitable for use with Three.js or React Three Fiber.'
+      'A string of JavaScript code that uses Three.js to create a 3D scene. The script should be a function that accepts a `scene` object and adds objects to it.'
     ),
 });
 export type Generate3DEnvironmentOutput = z.infer<typeof Generate3DEnvironmentOutputSchema>;
@@ -41,13 +41,22 @@ const prompt = ai.definePrompt({
   name: 'generate3DEnvironmentPrompt',
   input: {schema: Generate3DEnvironmentInputSchema},
   output: {schema: Generate3DEnvironmentOutputSchema},
-  prompt: `You are a 3D environment generation expert. Based on the user's preferences for style, complexity, and elements, generate a 3D environment data URI that can be used in a website.
+  prompt: `You are a 3D environment generation expert specializing in Three.js. Based on the user's preferences for style, complexity, and elements, generate a JavaScript function body that populates a Three.js scene.
 
-  Style: {{{style}}}
-  Complexity: {{{complexity}}}
-  Elements: {{{elements}}}
+  The function you generate will be executed in an environment where a THREE.Scene object named 'scene' is available. You should not create the scene or renderer. Your script should only add objects to the existing 'scene'.
 
-  Return the 3D environment data URI.
+  Do not include the function definition, just the body of the function. For example:
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshBasicMaterial({{ color: 0x00ff00 }});
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  User Preferences:
+  - Style: {{{style}}}
+  - Complexity: {{{complexity}}}
+  - Elements: {{{elements}}}
+
+  Return only the JavaScript code for the scene.
   `,
 });
 

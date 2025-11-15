@@ -3,17 +3,20 @@
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 type EnvironmentContextType = {
-  environmentUri: string | null;
-  setEnvironmentUri: Dispatch<SetStateAction<string | null>>;
+  environmentScript: string | null;
+  setEnvironmentScript: Dispatch<SetStateAction<string | null>>;
+  isGenerating: boolean;
+  setIsGenerating: Dispatch<SetStateAction<boolean>>;
 };
 
 const EnvironmentContext = createContext<EnvironmentContextType | undefined>(undefined);
 
 export function EnvironmentProvider({ children }: { children: ReactNode }) {
-  const [environmentUri, setEnvironmentUri] = useState<string | null>(null);
+  const [environmentScript, setEnvironmentScript] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   return (
-    <EnvironmentContext.Provider value={{ environmentUri, setEnvironmentUri }}>
+    <EnvironmentContext.Provider value={{ environmentScript, setEnvironmentScript, isGenerating, setIsGenerating }}>
       {children}
     </EnvironmentContext.Provider>
   );

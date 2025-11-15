@@ -2,13 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useEnvironment } from '@/context/environment-context';
 
 export default function ThreeBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const { environmentUri } = useEnvironment();
-  const modelRef = useRef<THREE.Group>();
+  const { environmentScript } = useEnvironment();
+  const modelGroupRef = useRef<THREE.Group>();
+  const animationFrameId = useRef<number>();
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -63,9 +63,12 @@ export default function ThreeBackground() {
 
     // Animation loop
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId.current = requestAnimationFrame(animate);
       starField.rotation.y += 0.0001;
       starField.rotation.x += 0.0001;
+      if (modelGroupRef.current) {
+        modelGroupRef.current.rotation.y += 0.0005;
+      }
       camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.02;
       camera.position.y += (mouse.y * 0.5 - camera.position.y) * 0.02;
       camera.lookAt(scene.position);
@@ -75,23 +78,29 @@ export default function ThreeBackground() {
 
     // Handle resize
     const handleResize = () => {
+      if (!currentMount) return;
       camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     };
     window.addEventListener('resize', handleResize);
     
-    // GLTF Loader
-    if (environmentUri) {
-      const loader = new GLTFLoader();
-      loader.load(environmentUri, (gltf) => {
-        if (modelRef.current) {
-          scene.remove(modelRef.current);
-        }
-        gltf.scene.scale.set(0.5, 0.5, 0.5);
-        scene.add(gltf.scene);
-        modelRef.current = gltf.scene;
-      });
+    // Script execution for generated environment
+    if (environmentScript) {
+      if (modelGroupRef.current) {
+        scene.remove(modelGroupRef.current);
+        modelGroupRef.current.clear();
+      }
+      try {
+        const modelGroup = new THREE.Group();
+        // eslint-disable-next-line @typescript-eslint/no-implied-eval
+        const generatedFunction = new Function('scene', 'THREE', 'modelGroup', environmentScript);
+        generatedFunction(scene, THREE, modelGroup);
+        scene.add(modelGroup);
+        modelGroupRef.current = modelGroup;
+      } catch (error) {
+        console.error("Error executing generated 3D script:", error);
+      }
     }
 
     // Cleanup
@@ -99,11 +108,17 @@ export default function ThreeBackground() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
       if (currentMount) {
         currentMount.removeChild(renderer.domElement);
       }
+      if (modelGroupRef.current) {
+        scene.remove(modelGroupRef.current);
+      }
     };
-  }, [environmentUri]);
+  }, [environmentScript]);
 
   return <div ref={mountRef} className="fixed top-0 left-0 w-full h-full -z-10" />;
 }

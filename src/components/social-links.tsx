@@ -1,13 +1,13 @@
 'use client';
 
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 
 const iconComponents: { [key: string]: React.ElementType } = {
   Github,
   Linkedin,
-  Twitter,
+  Instagram,
 };
 
 type SocialLink = {
@@ -21,6 +21,7 @@ export default function SocialLinks({ links }: { links: SocialLink[] }) {
     <div className="flex items-center gap-2 mt-4">
       {links.map(social => {
         const IconComponent = iconComponents[social.icon];
+        if (!IconComponent) return null;
         return (
           <Button
             key={social.name}

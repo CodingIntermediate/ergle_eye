@@ -66,18 +66,18 @@ export const profile = {
   socials: [
     {
       name: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://github.com/CodingIntermediate',
       icon: 'Github',
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com',
+      url: 'https://www.linkedin.com/in/pranav-s--prasad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       icon: 'Linkedin',
     },
     {
-        name: 'Twitter',
-        url: 'https://twitter.com',
-        icon: 'Twitter',
+        name: 'Instagram',
+        url: 'https://www.instagram.com/ergle_eye?igsh=Z2I5OTl2MWZyYXV4',
+        icon: 'Instagram',
     }
   ]
 }
